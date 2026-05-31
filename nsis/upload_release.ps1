@@ -57,7 +57,7 @@ $body = @{
 
 Write-Host "Creating GitHub release v1.0.0.15..."
 try {
-    $release = Invoke-RestMethod -Uri "https://api.github.com/repos/tom613951/voidImageViewer/releases" -Method Post -Headers $headers -Body $body -ContentType "application/json"
+    $release = Invoke-RestMethod -Uri "https://api.github.com/repos/tom613951/voidImageViewer/releases" -Method Post -Headers $headers -Body $body -ContentType "application/json; charset=utf-8"
     $uploadUrl = $release.upload_url.Replace("{?name,label}", "")
     Write-Host "Release created successfully."
     Write-Host "Upload URL: $uploadUrl"
