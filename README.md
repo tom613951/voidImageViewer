@@ -1,50 +1,49 @@
-# void Image Viewer
-A lightweight image viewer for Windows with animated GIF/WEBP support.  
-Opens and displays BMP, GIF, ICO, PNG, JPG, TIF and WEBP images as fast as possible.  
-Animate GIF/WEBP files as accurately as possible.  
+# void Image Viewer (中文版)
+适用于 Windows 的轻量级图像查看器，支持 GIF/WEBP 动态图片。  
+以最快速度打开并显示 BMP, GIF, ICO, PNG, JPG, TIF 和 WEBP 图像。  
+精准还原并播放 GIF 和 WEBP 动图。  
 
-[Download](#download)<br/>
-[See also](#See-also)<br/>
+[下载](#下载)<br/>
+[参见](#参见)<br/>
 <br/><br/><br/>
 
 
-
-Download
+下载
 --------
-https://github.com/voidtools/voidImageViewer/releases
+https://github.com/tom613951/voidImageViewer/releases
 
 https://www.voidtools.com/forum/viewtopic.php?t=5623
 <br/><br/><br/>
 
 
-void Image Viewer main window:
+void Image Viewer 主窗口:
 
 ![Void Image Viewer Image View](https://www.voidtools.com/voidImageViewer.Image.View10.gif)
 <br/><br/><br/>
 
 
 
-void Image Viewer General Options:
+void Image Viewer 常规选项:
 
 ![Void Image Viewer Options General](https://www.voidtools.com/voidImageViewer.Options.General10.png)
 <br/><br/><br/>
 
 
 
-void Image Viewer View Options:
+void Image Viewer 视图选项:
 
 ![Void Image Viewer Options View](https://www.voidtools.com/voidImageViewer.Options.View10.png)
 <br/><br/><br/>
 
 
 
-void Image Viewer Controls Options:
+void Image Viewer 控件选项:
 
 ![Void Image Viewer Image Controls](https://www.voidtools.com/voidImageViewer.Options.Controls10.png)
 <br/><br/><br/>
 
 
 
-See also
+参见
 --------
 https://www.voidtools.com/forum/viewtopic.php?t=5623
