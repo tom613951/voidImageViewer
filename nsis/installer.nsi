@@ -22,6 +22,9 @@
 ; SOFTWARE.
 ;
 
+; Unicode installer support
+Unicode true
+
 ; defines
 !verbose 3
 

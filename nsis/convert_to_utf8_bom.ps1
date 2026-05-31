@@ -32,9 +32,15 @@ $files = @(
 foreach ($file in $files) {
     $filePath = Join-Path $PSScriptRoot $file
     if (Test-Path $filePath) {
-        Write-Host "Converting $file to UTF-8 with BOM..."
-        $content = Get-Content $filePath -Raw -Encoding UTF8
-        [System.IO.File]::WriteAllText($filePath, $content, [System.Text.UTF8Encoding]::new($true))
+        if ($file.EndsWith(".ini")) {
+            Write-Host "Converting $file to UTF-16LE with BOM (UTF-16 Unicode)..."
+            $content = Get-Content $filePath -Raw -Encoding UTF8
+            [System.IO.File]::WriteAllText($filePath, $content, [System.Text.Encoding]::Unicode)
+        } else {
+            Write-Host "Converting $file to UTF-8 with BOM..."
+            $content = Get-Content $filePath -Raw -Encoding UTF8
+            [System.IO.File]::WriteAllText($filePath, $content, [System.Text.UTF8Encoding]::new($true))
+        }
         Write-Host "  Done: $file" -ForegroundColor Green
     } else {
         Write-Host "  Warning: $file not found" -ForegroundColor Yellow
