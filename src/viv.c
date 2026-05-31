@@ -527,6 +527,7 @@ static void _viv_update_ontop(void);
 static void _viv_update_prevent_sleep(void);
 static void _viv_dst_pos_set(int x,int y);
 static void _viv_dst_zoom_set(int x,int y);
+struct _viv_key_list_s;
 static void _viv_frame_skip(int size);
 static DWORD WINAPI _viv_load_image_thread_proc(void *param);
 static _viv_reply_t *_viv_reply_add(DWORD type,DWORD size,void *data);
@@ -13337,7 +13338,7 @@ static INT_PTR CALLBACK _viv_search_everything_proc(HWND hwnd,UINT msg,WPARAM wP
 			SetWindowLongPtr(hwnd,GWLP_USERDATA,lParam);
 			
 			os_SetWindowText_localization_id(hwnd,lParam ? LOCALIZATION_ID_EVERYTHING_ADD_EVERYTHING_SEARCH_CAPTION : LOCALIZATION_ID_EVERYTHING_LOAD_EVERYTHING_SEARCH_CAPTION);
-			os_SetDlgItemText_localization_id(hwnd,IDC_SEARCH_EVERYTHING_RANDOM_CHECKBOX,LOCALIZATION_ID_RANDOMIZE);
+			os_SetDlgItemText_localization_id(hwnd,IDC_SEARCH_EVERYTHING_RANDOM,LOCALIZATION_ID_RANDOMIZE);
 			
 			return TRUE;
 		
@@ -13351,7 +13352,7 @@ static INT_PTR CALLBACK _viv_search_everything_proc(HWND hwnd,UINT msg,WPARAM wP
 					
 					GetDlgItemText(hwnd,IDC_EVERYTHING_EDIT,search_wbuf,STRING_SIZE);
 					
-					if (_viv_send_everything_search(hwnd,GetWindowLongPtr(hwnd,GWLP_USERDATA),IsDlgButtonChecked(hwnd,IDC_SEARCH_EVERYTHING_RANDOM_CHECKBOX) == BST_CHECKED,search_wbuf))
+					if (_viv_send_everything_search(hwnd,GetWindowLongPtr(hwnd,GWLP_USERDATA),IsDlgButtonChecked(hwnd,IDC_SEARCH_EVERYTHING_RANDOM) == BST_CHECKED,search_wbuf))
 					{
 						EndDialog(hwnd,0);
 					}
