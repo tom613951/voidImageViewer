@@ -1,4 +1,4 @@
-;
+﻿;
 ; Copyright 2025 voidtools / David Carpenter
 ; 
 ; Multi-language and multi-VS version support added by hesphoros (2026)
@@ -45,6 +45,16 @@
 ; Added by hesphoros (2026)
 !ifndef LANG
 	!define LANG "Chinese"  ; Default language
+!endif
+
+; Executable file path configuration
+; Can be overridden via command line: makensis.exe /DEXE_PATH=..\build\voidImageViewer.exe installer.nsi
+!ifndef EXE_PATH
+	!ifdef x64
+		!define EXE_PATH "..\${VS_VERSION}\x64\${BUILD_CONFIG}\voidImageViewer.exe"
+	!else
+		!define EXE_PATH "..\${VS_VERSION}\${BUILD_CONFIG}\voidImageViewer.exe"
+	!endif
 !endif
 
 ; we need admin access to write to program files and registry (associations).
@@ -290,7 +300,7 @@ no_gif_association:
 skip_gif_association:
 
 	; ico Associations
-	!insertmacro MUI_INSTALLOPTIONS_READ $R0 "InstallOptions2.ini" "Field 5" "State"
+	!insertmacro MUI_INSTALLOPTIONS_READ $R0 "${INSTALL_OPTIONS2_FILE}" "Field 5" "State"
 	strcmp $R0 "0" no_ico_association
 	StrCpy $user_install_options "$user_install_options /ico"
 	Goto skip_ico_association
@@ -302,7 +312,7 @@ no_ico_association:
 skip_ico_association:
 
 	; jpeg Associations
-	!insertmacro MUI_INSTALLOPTIONS_READ $R0 "InstallOptions2.ini" "Field 6" "State"
+	!insertmacro MUI_INSTALLOPTIONS_READ $R0 "${INSTALL_OPTIONS2_FILE}" "Field 6" "State"
 	strcmp $R0 "0" no_jpeg_association
 	StrCpy $user_install_options "$user_install_options /jpeg"
 	Goto skip_jpeg_association
@@ -314,7 +324,7 @@ no_jpeg_association:
 skip_jpeg_association:
 
 	; jpg Associations
-	!insertmacro MUI_INSTALLOPTIONS_READ $R0 "InstallOptions2.ini" "Field 7" "State"
+	!insertmacro MUI_INSTALLOPTIONS_READ $R0 "${INSTALL_OPTIONS2_FILE}" "Field 7" "State"
 	strcmp $R0 "0" no_jpg_association
 	StrCpy $user_install_options "$user_install_options /jpg"
 	Goto skip_jpg_association
@@ -326,7 +336,7 @@ no_jpg_association:
 skip_jpg_association:
 
 	; png Associations
-	!insertmacro MUI_INSTALLOPTIONS_READ $R0 "InstallOptions2.ini" "Field 8" "State"
+	!insertmacro MUI_INSTALLOPTIONS_READ $R0 "${INSTALL_OPTIONS2_FILE}" "Field 8" "State"
 	strcmp $R0 "0" no_png_association
 	StrCpy $user_install_options "$user_install_options /png"
 	Goto skip_png_association
@@ -338,7 +348,7 @@ no_png_association:
 skip_png_association:
 
 	; tif Associations
-	!insertmacro MUI_INSTALLOPTIONS_READ $R0 "InstallOptions2.ini" "Field 9" "State"
+	!insertmacro MUI_INSTALLOPTIONS_READ $R0 "${INSTALL_OPTIONS2_FILE}" "Field 9" "State"
 	strcmp $R0 "0" no_tif_association
 	StrCpy $user_install_options "$user_install_options /tif"
 	Goto skip_tif_association
@@ -350,7 +360,7 @@ no_tif_association:
 skip_tif_association:
 
 	; tiff Associations
-	!insertmacro MUI_INSTALLOPTIONS_READ $R0 "InstallOptions2.ini" "Field 10" "State"
+	!insertmacro MUI_INSTALLOPTIONS_READ $R0 "${INSTALL_OPTIONS2_FILE}" "Field 10" "State"
 	strcmp $R0 "0" no_tiff_association
 	StrCpy $user_install_options "$user_install_options /tiff"
 	Goto skip_tiff_association
@@ -362,7 +372,7 @@ no_tiff_association:
 skip_tiff_association:
 
 	; webp Associations
-	!insertmacro MUI_INSTALLOPTIONS_READ $R0 "InstallOptions2.ini" "Field 11" "State"
+	!insertmacro MUI_INSTALLOPTIONS_READ $R0 "${INSTALL_OPTIONS2_FILE}" "Field 11" "State"
 	strcmp $R0 "0" no_webp_association
 	StrCpy $user_install_options "$user_install_options /webp"
 	Goto skip_webp_association
@@ -385,15 +395,7 @@ skip_webp_association:
 	; write out files to copy.
 	; VS version and build config are configurable via defines
 
-	!ifdef x64
-	
-		File "..\${VS_VERSION}\x64\${BUILD_CONFIG}\voidImageViewer.exe"
-		
-	!else
-	
-		File "..\${VS_VERSION}\${BUILD_CONFIG}\voidImageViewer.exe"
-		
-	!endif
+	File "${EXE_PATH}"
 
 	; File "..\Changes.txt"
 	WriteUninstaller "$pluginsdir\voidImageViewer\Uninstall.exe"
