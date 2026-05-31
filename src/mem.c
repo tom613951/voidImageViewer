@@ -162,7 +162,7 @@ void *mem_alloc_debug(const char *file,int line,uintptr_t size)
 		// enter critical section to block any other threads from running out of memory and throwing another error.
 		EnterCriticalSection(&mem_debug_cs);
 		
-		MessageBoxA(0,"Out of Memory","Everything",MB_SYSTEMMODAL|MB_OK|MB_ICONERROR);
+		MessageBoxA(0,"内存不足","voidImageViewer",MB_SYSTEMMODAL|MB_OK|MB_ICONERROR);
 
 		DebugBreak();
 		

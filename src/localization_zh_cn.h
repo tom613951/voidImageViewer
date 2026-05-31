@@ -286,13 +286,13 @@ static const utf8_t *_localization_string_array_zh_cn[LOCALIZATION_ID_COUNT] =
 	"移动到", // LOCALIZATION_ID_MOVE_TO_CAPTION,
 
 	// Association descriptions
-	"Bitmap Image",
-	"Animated GIF Image",
-	"Icon File",
-	"JPEG Image",
-	"JPEG Image",
-	"PNG Image",
-	"TIFF Image",
-	"TIFF Image",
-	"WebP Image",
+	"位图图像",
+	"GIF 动图",
+	"图标文件",
+	"JPEG 图像",
+	"JPEG 图像",
+	"PNG 图像",
+	"TIFF 图像",
+	"TIFF 图像",
+	"WebP 图像",
 };
